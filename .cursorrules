@@ -1,0 +1,44 @@
+# Library Management System — AI Agent Rules
+# These rules apply to ALL AI coding assistants (Cursor, Claude, Copilot)
+
+## MANDATORY RULES
+
+### Architecture
+- NEVER generate code that uses external databases (PostgreSQL, MySQL, MongoDB, Redis, etc.)
+- NEVER use external APIs or HTTP calls
+- ALL data storage MUST use In-Memory collections (Python dict/list)
+- ALWAYS program to interfaces (abstract base classes in src/storage/interfaces.py)
+- NEVER bypass the Repository pattern — services talk ONLY through repository interfaces
+
+### Code Quality
+- NEVER generate a class without a corresponding abstract interface
+- ALWAYS follow SOLID principles — especially Single Responsibility and Dependency Inversion
+- NEVER create God classes — split responsibilities into focused classes
+- ALWAYS use dependency injection in constructors
+- NEVER use global state or singletons
+
+### Testing (TDD)
+- ALWAYS write tests before or simultaneously with implementation
+- EVERY new service method MUST have at least 3 tests (happy path + 2 edge cases)
+- NEVER mock the system under test — only mock external dependencies
+- Tests MUST be in tests/unit/ or tests/integration/ folders
+- ALWAYS run: pytest --cov=src --cov-fail-under=70 before committing
+
+### Design Patterns
+- Strategy Pattern is used for FineStrategy — ALWAYS add new fine algorithms as new Strategy classes
+- Observer Pattern is used for notifications — ALWAYS use EventBus.publish_event() for domain events
+- NEVER add direct notification calls inside services — use events only
+
+### File Structure
+- Models go in src/models/
+- Services go in src/services/
+- Repository implementations go in src/storage/
+- Utilities go in src/utils/
+- NEVER mix layers
+
+### Forbidden
+- External DB connections
+- HTTP requests in business logic
+- Hardcoded IDs
+- Magic numbers without named constants
+- Mutable default arguments in Python
