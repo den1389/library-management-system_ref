@@ -1,10 +1,10 @@
 # 📚 Library Management System
 
 [![CI/CD Pipeline](https://github.com/den1389/library-management-system_ref/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/den1389/library-management-system_ref/actions/workflows/ci-pipeline.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=https://github.com/den1389/library-management-system_ref&metric=alert_status)](https://sonarcloud.io/project/overview?id=library-management-system_ref)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=library-management-system_ref&metric=coverage)](https://sonarcloud.io/project/overview?id=library-management-system_ref)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=library-management-system_ref&metric=code_smells)](https://sonarcloud.io/project/overview?id=library-management-system_ref)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=library-management-system_ref&metric=bugs)](https://sonarcloud.io/project/overview?id=library-management-system_ref)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=den1389_library-management-system_ref&metric=alert_status)](https://sonarcloud.io/project/overview?id=den1389_library-management-system_ref)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=den1389_library-management-system_ref&metric=coverage)](https://sonarcloud.io/project/overview?id=den1389_library-management-system_ref)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=den1389_library-management-system_ref&metric=bugs)](https://sonarcloud.io/project/overview?id=den1389_library-management-system_ref)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=den1389_library-management-system_ref&metric=code_smells)](https://sonarcloud.io/project/overview?id=den1389_library-management-system_ref)
 
 Система управління бібліотекою з In-Memory сховищем, GoF патернами, SOLID принципами та повним CI/CD пайплайном.
 
@@ -65,13 +65,14 @@ docker run library-system
 
 ## 📊 Quality Metrics
 
-| Метрика          | Ціль       | Статус |
-| ---------------- | ---------- | ------ |
-| Code Coverage    | ≥ 70%      | ✅     |
-| Кількість тестів | ≥ 200      | ✅     |
-| Bugs             | 0          | ✅     |
-| Vulnerabilities  | 0          | ✅     |
-| Code Smells      | Рівень A/B | ✅     |
+| Метрика          | Ціль       | Статус    |
+| ---------------- | ---------- | --------- |
+| Code Coverage    | ≥ 70%      | ✅ 91.1%  |
+| Кількість тестів | ≥ 200      | ✅ 239    |
+| Bugs             | 0          | ✅ 0      |
+| Vulnerabilities  | 0          | ✅ 0      |
+| Code Smells      | Рівень A/B | ✅ A      |
+| Quality Gate     | Passed     | ✅ Passed |
 
 ## 🔑 Бізнес-логіка
 
@@ -106,31 +107,25 @@ docker run library-system
 Пайплайн (`.github/workflows/ci-pipeline.yml`) виконує:
 
 1. **Build** — встановлення залежностей
-2. **Test** — запуск 200+ тестів
-3. **Coverage** — генерація HTML + XML звітів
+2. **Test** — запуск 239 тестів
+3. **Coverage** — генерація HTML + XML звітів (91.1%)
 4. **SonarCloud** — статичний аналіз якості
-5. **Artifacts** — збереження junit.xml, coverage.xml, coverage_html/
-
-### Захист гілки (Branch Protection)
-
-- PR не може бути прийнятий, якщо пайплайн "червоний"
-- Quality Gate SonarCloud має бути "зелений"
-- Coverage ≥ 70% обов'язковий
+5. **Artifacts** — збереження `junit.xml`, `coverage.xml`, `coverage_html/`
 
 ## 📁 Структура репозиторію
 
 ```
 .
-├── src/                    # Вихідний код
-├── tests/                  # 200+ тестів
-├── docs/diagrams/          # UML діаграми
-├── .cursor/rules/          # AI Skills (architecture.md, testing_strategy.md)
-├── .github/workflows/      # CI/CD пайплайн
-├── .cursorrules            # Глобальні правила для AI
-├── Dockerfile              # Контейнеризація
-├── pytest.ini              # Конфігурація тестів
-├── setup.cfg               # Coverage конфігурація
+├── src/                     # Вихідний код
+├── tests/                   # 239 тестів (91.1% coverage)
+├── docs/diagrams/           # UML діаграми
+├── .cursor/rules/           # AI Skills (architecture.md, testing_strategy.md)
+├── .github/workflows/       # CI/CD пайплайн
+├── .cursorrules             # Глобальні правила для AI
+├── Dockerfile               # Контейнеризація
+├── pytest.ini               # Конфігурація тестів
+├── setup.cfg                # Coverage конфігурація
 ├── sonar-project.properties # SonarQube конфігурація
-├── requirements.txt        # Залежності
-└── README.md               # Цей файл
+├── requirements.txt         # Залежності
+└── README.md                # Цей файл
 ```
